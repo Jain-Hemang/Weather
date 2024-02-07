@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const apiKey = "b385900f0547b145f469ef493cbf08ca" ;
     const apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=" ;
     const searchbox = document.getElementById("search-input") ;
+    const time_today= document.getElementById
     
 
     const searchbtn = document.getElementById("search-button") ;
-    const weatherinfo = document.getElementById("image");
+    const weatherinfo = document.getElementById("weather-image");
     
     async function checkweather(city){
         const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -30,11 +31,11 @@ document.addEventListener("DOMContentLoaded", function() {
         seconds = (seconds < 10) ? '0' + seconds : seconds;
         var currentdate =year + '-' + month + '-' + day
         var currentTimeString = year + '-' + month + '-' + day + ' ' +  hours + ':' + minutes + ':' + seconds;
+        
         var currentTime = hours + ':' + minutes + ':' + seconds
         let evaltime ;
         for(let i=0 ; i<8 ; i++){
             if(data.list[i].dt_txt>currentTimeString){
-                console.log(data.list[i-1].dt_txt) ;
                 evaltime=data.list[i-1] ;
                 break ;
             }
@@ -72,23 +73,55 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("temp_min").innerHTML=`Minimum Temp : ${evaltime.main.temp_min}` ;
         document.getElementById("weather").innerHTML=`${evaltime.weather[0].main}` ;
         
+        function eval_images(time_weather){
 
-        if(evaltime.weather[0].main == "Clouds"){
-            weatherinfo.src="images/clouds.png"
+            if(time_weather == "Clouds"){
+                weatherinfo.src="./images/clouds.png"
+            }
+            else if(time_weather == "Clear"){
+                weatherinfo.src="./images/sunny.png"
+            }
+            else if(time_weather == "Rain"){
+                weatherinfo.src="./images/isolated_thunderstorms.png"
+            }
+            else if(time_weather == "Drizzle"){
+                weatherinfo.src="./images/rains.png"
+            }
+            else if(time_weather == "Mist"){
+                weatherinfo.src="./images/periodic_clouds.png"
+            }
         }
-        else if(evaltime.weather[0].main == "Clear"){
-            weatherinfo.src="images/sunny.png"
+        // evaltime.weather[0].main
+        for ( let i=0 ; i<8 ; i++){
+            let today_weather = document.getElementById(`${[i+1]}`)
+            
+            today_weather.firstElementChild.innerHTML = data.list[i].dt_txt.substring(11)
+            
+            today_weather.children[1].src=eval_images(data.list[i].weather[0].main)
+            today_weather.children[2].innerHTML = data.list[i].weather[0].main
+            today_weather.children[3].innerHTML = data.list[i].main.temp
+        // console.log(data.list[i].dt_txt.substring(11) )       
         }
-        else if(evaltime.weather[0].main == "Rain"){
-            weatherinfo.src="images/isolated_thunderstorms.png"
-        }
-        else if(evaltime.weather[0].main == "Drizzle"){
-            weatherinfo.src="images/rains.png"
-        }
-        else if(evaltime.weather[0].main == "Mist"){
-            weatherinfo.src="images/periodic_clouds.png"
+        for ( let i=0 ; i<6 ; i++){
+            let daily_weather = document.getElementById(`day-${[i]}`)
+            daily_weather.firstElementChild.innerHTML=`${getDayOfWeek(data.list[i*7].dt_txt.substring(0,10))}` ;
+            daily_weather.children[1].innerHTML = data.list[i*7].dt_txt.substring(0,10)
+            daily_weather.children[2].innerHTML = data.list[i].main.temp_min
+            daily_weather.children[3].innerHTML = data.list[i].main.temp_max
+            // daily_weather.children[4].src=eval_images(data.list[i].weather[0].main)
+            daily_weather.children[5].innerHTML = data.list[i].weather[0].main
+        // console.log(data.list[i].dt_txt.substring(11) )       
         }
         
+        // function myMap() {
+        //     var mapProp= {
+        //       center:new google.maps.LatLng(data.city.coord.lat,data.city.coord.lon),
+        //       zoom:5,
+        //     };
+        //     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+        // }
+
+  
         
             
         
