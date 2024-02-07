@@ -12,8 +12,8 @@
     <div class="navbar">
         WeatherWise
         <div class="search">
-            <input type="text" placeholder="Enter City Name" name="search bar">
-            <button type="submit" name="search button">Search</button> 
+            <input id="search-input" placeholder="Enter City Name">
+            <button id="search-button">Search</button> 
         </div>
         <div class="navbar_right">
             
@@ -31,24 +31,24 @@
             
             <div class="current_weather">
                 <div>
-                    
-                    <div>
-                        <img src="images/download.png" width="40px" height="40px">
-                    </div>
-                    <div>
-                        Sunny ....
-                    </div>
-                    <div>
-                        .......
-                    </div>
-                    
-                </div>
-                <div>
                     <div id="City">
                         Name
                     </div>
+                    <div id="image">
+                        <img src="images/download.png" width="40px" height="40px">
+                    </div>
+                    <div id="weather">
+                        Sunny ....
+                    </div>
+                    
+                    
+                </div>
+                <div>
                     <div id="day">
-                        Day , dd/mm , time
+                        Day 
+                    </div>
+                    <div id="date">
+                        dd/mm , time
                     </div>
                     <div id="temp">
                         Temperatue
@@ -66,6 +66,12 @@
                     </div>
                     <div id="humidity">
                         Humidity
+                    </div>
+                    <div id="temp_max">
+                        Temp Max
+                    </div>
+                    <div id="temp_min">
+                        Temp Min
                     </div>
                 </div>
             </div>
@@ -195,7 +201,7 @@
         
         <div class="sevendays_weather">
             
-            <div class="info">
+            <div class="info" id="day-0">
                 <div>
                     Day
                 </div>
@@ -216,7 +222,7 @@
                 </div>
                 
             </div>
-            <div class="info">
+            <div class="info" id="day-1"> 
                 <div>
                     Day
                 </div>
@@ -237,7 +243,7 @@
                 </div>
                 
             </div>
-            <div class="info">
+            <div class="info" id="day-2">
                 <div>
                     Day
                 </div>
@@ -258,7 +264,7 @@
                 </div>
                 
             </div>
-            <div class="info">
+            <div class="info" id="day-3">
                 <div>
                     Day
                 </div>
@@ -279,7 +285,7 @@
                 </div>
                 
             </div>
-            <div class="info">
+            <div class="info" id="day-4">
                 <div>
                     Day
                 </div>
@@ -300,7 +306,7 @@
                 </div>
                 
             </div>
-            <div class="info">
+            <div class="info" id="day-5">
                 <div>
                     Day
                 </div>
@@ -321,27 +327,7 @@
                 </div>
                 
             </div>
-            <div class="info">
-                <div>
-                    Day
-                </div>
-                <div>
-                    dd mm
-                </div>
-                <div>
-                    temp_max
-                </div>
-                <div>
-                    temp_min
-                </div>
-                <div>
-                    <img src="images/download.png" width="30px" height="30px">
-                </div>
-                <div>
-                    type_weather
-                </div>
-                
-            </div>
+            
         </div>
     </div>
     
