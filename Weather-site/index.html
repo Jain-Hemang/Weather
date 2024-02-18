@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherWise</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxNt04WyOFF-dXltD_TA0YWBRmG14SAIM&callback=myMap"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxNt04WyOFF-dXltD_TA0YWBRmG14SAIM&callback=myMap"></script>
     <script>
 
         function myMap() {
@@ -14,9 +14,10 @@
             };
             var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
         }
-    </script>
+    </script> -->
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxNt04WyOFF-dXltD_TA0YWBRmG14SAIM&libraries=places"></script>
     
 </head>
 <body>
@@ -201,11 +202,24 @@
                 </div>
             </div>
         </div>
-        <div id="googleMap" style="width:200px;height:190px;"></div>
-        <!-- <div class="maps">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6995.956970754189!2d77.11048904135811!3d28.750059308686403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0138a74f7da7%3A0xf09fad683c23bd5d!2sDelhi%20Technological%20University!5e0!3m2!1sen!2sin!4v1706899844726!5m2!1sen!2sin" width="400vh" height="200px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div id="map" style="height: 250px; width: 450px;"></div>
+        <!-- <script type="text/javascript" src="script.js"></script> -->
+        <script type="text/javascript">
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 28.58, lng: 77.33},
+                    zoom: 11
+                });
+                console.log(lats);
+            }
+            console.log(lats);
+            
+        </script>
 
-        </div> -->
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxNt04WyOFF-dXltD_TA0YWBRmG14SAIM&callback=initMap">
+        </script>
+       
         
     
     </div>

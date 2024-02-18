@@ -55,13 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
         
             return dayOfWeek;
         }
+           
+        const lats = data.city.coord.lat ;
         
-        // Example usage:
-         // Format: YYYY-MM-DD
-        
-        
-        
-        
+        const lons = data.city.coord.lon ;
         document.querySelector("#City").innerHTML=`City : ${data.city.name}` ;
         document.getElementById("day").innerHTML=`${getDayOfWeek(currentdate)}` ;
         document.querySelector("#date").innerHTML=`${currentTimeString}` ;
@@ -110,18 +107,14 @@ document.addEventListener("DOMContentLoaded", function() {
             daily_weather.children[3].innerHTML = data.list[i].main.temp_max
             // daily_weather.children[4].src=eval_images(data.list[i].weather[0].main)
             daily_weather.children[5].innerHTML = data.list[i].weather[0].main
-        // console.log(data.list[i].dt_txt.substring(11) )       
+              
         }
         
-        // function myMap() {
-        //     var mapProp= {
-        //       center:new google.maps.LatLng(data.city.coord.lat,data.city.coord.lon),
-        //       zoom:5,
-        //     };
-        //     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-        // }
-
-  
+        
+        
+        window.externalConstVar = lats;
+        window.externalConstVar = lons;
+    
         
             
         
@@ -134,8 +127,5 @@ document.addEventListener("DOMContentLoaded", function() {
         checkweather(searchbox.value);
         
     });
-// checkweather();
-
-// checkweather();
 
 })
